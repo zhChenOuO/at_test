@@ -1,0 +1,22 @@
+stages:
+  - build
+  # - deploy
+
+build:
+  stage: build
+  image: docker:19
+  services:
+    - docker:19.03.12-dind
+  script:
+    - docker info
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build -f ./deploy/docker/Dockerfile -t index.docker.io/osbornouo/ec-server . --pull
+    - docker image push index.docker.io/osbornouo/ec-server:latest
+# deploy:
+#   stage: deploy
+#   image: google/cloud-sdk
+#   script:
+#     - gcloud config set project how-may
+#     - echo "$GCP_SERVICE_KEY" > gcloud-service-key.json
+#     - gcloud auth activate-service-account --key-file gcloud-service-key.json
+#     - gcloud compute instances update-container rms-server --zone=asia-east1-b --container-image=index.docker.io/osbornouo/rms:latest

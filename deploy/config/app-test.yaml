@@ -1,0 +1,31 @@
+app:
+  jwt_secrets: "abcdef"
+  jwt_expire_sec: 36000000
+log:
+  app_id: iam
+  env: local
+  debug: true
+  local: true
+http:
+  debug: true
+  address: ":8080"
+database:
+  read:
+    debug: true
+    host: "0.0.0.0"
+    port: 5432
+    username: "postgres"
+    password: "admin"
+    dbname: "postgres"
+    type: "postgres"
+  write:
+    debug: true
+    host: "0.0.0.0"
+    port: 5432
+    username: "postgres"
+    password: "admin"
+    dbname: "postgres"
+    type: "postgres"
+  secrets: ""
+gmail:
+  path: "deploy/config"

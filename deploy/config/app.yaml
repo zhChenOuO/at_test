@@ -1,0 +1,34 @@
+app:
+  jwt_secrets: "abcdef"
+  jwt_expire_sec: 36000000
+  scheduler:
+    verify_identity_account_email_freq: "@every 5m"
+    verify_identity_account_phone_freq: "@every 5m"
+log:
+  app_id: iam
+  env: local
+  debug: true
+  local: true
+http:
+  debug: true
+  address: ":8080"
+database:
+  read:
+    debug: true
+    host: "0.0.0.0"
+    port: 5432
+    username: "postgres"
+    password: "postgres"
+    dbname: "postgres"
+    type: "postgres"
+  write:
+    debug: true
+    host: "0.0.0.0"
+    port: 5432
+    username: "postgres"
+    password: "postgres"
+    dbname: "postgres"
+    type: "postgres"
+  secrets: ""
+gmail:
+  path: "deploy/config"
